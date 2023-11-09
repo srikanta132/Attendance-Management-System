@@ -1,2 +1,2 @@
 # Attendance
- The Java & MySQL projetcs Attendance Management System
+ The Java Spring Boot Framework & MySQL projetcs Attendance Management System.
