@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>ADD STUDENT</h1>
+    <form action="" id="dataForm">
+      name : <input type="text" id="name" placeholder="Name" required /><br>
+      dep : <input type="text" id="dep" placeholder="dep" required/><br>
+      Roll Num :<input type="text" id="roll" name="roll" placeholder="F21005024027" required>
+      <button type="button" class="btn btn-primary" id="button">ADD</button>
+    </form>
+    <input type="hidden" th:value="${endPoint}" id="hidval" />
+    <div>
+      <h1 id="successMessage" style="display: none">Added Succeessfully</h1>
+    </div>
+    <br />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.getElementById("button").addEventListener("click", sendData);
+      function sendData() {
+        const data = {
+          name: document.getElementById("name").value,
+          dep: document.getElementById("dep").value,
+          roll: document.getElementById("roll").value,
+        };
+
+        let val = document.getElementById('hidval').value
+        // console.log(val)
+        fetch(val, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.text();
+            }
+            throw new Error("Network response was not ok.");
+          })
+          .then((resData) => {
+            console.log(resData);
+            showSuccessMessage();
+            clear();
+          })
+          .catch((exception) => {
+            console.error("Error", exception);
+          });
+
+        function showSuccessMessage() {
+          const successMessage = document.getElementById("successMessage");
+          successMessage.style.display = "block"; // Show the success message
+        }
+
+        setTimeout(function () {
+          successMessage.style.display = "none";
+        }, 3000);
+
+        function clear() {
+          let form = document.getElementById("dataForm");
+          let input = form.getElementsByTagName("input");
+          for (let i = 0; i < input.length; i++) {
+            input[i].value = "";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

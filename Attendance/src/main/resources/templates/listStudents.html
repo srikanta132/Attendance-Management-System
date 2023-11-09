@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+<body>
+    <form action="/submit-att" method="post">
+        <ul th:each="item : ${obj}">
+            <li>
+                <label>
+                    <input type="checkbox" name="students" id="" th:value="${item.getId()}">
+                    <span th:text="${item.getName()}"></span>
+                </label>
+            </li>
+        </ul>
+        <button type="submit">take</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .details{
+            display: flex;
+            flex-direction: row;
+
+        }
+        .in{
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+        }
+        input{
+            width: 400px;
+            height: 40px;
+            margin-bottom: 10px;
+            border: 2px solid royalblue;
+            font-weight: bold;
+        }
+        #name{
+            margin-left: 40px;
+        }
+        input:hover{
+            border: 2px solid rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+                Student Name :
+                <input type="text" name="" id="name" th:value="${st.getName()}" readonly>
+    <div>
+        <div  class="details">
+    
+                <div class="in">
+                    
+
+    
+                Registration Number : 
+                <input type="text" name="" id="roll" th:value="${st.getRoll()}" readonly>
+
+
+                Department :
+                <input type="text" name="" id="dep" th:value="${st.getDep()}" readonly>
+
+            
+                Email :
+                <input type="text" name="" id="email" th:value="${st.getEmail()}" readonly>
+
+    
+                Contact #1 :
+                <input type="text" name="" id="con1" th:value="${st.getContact_01()}" readonly>
+
+ 
+                Contact #2
+                <input type="text" name="" id="con2" th:value="${st.getContact_02()}" readonly>
+                </div>
+
+            
+                <div class="in">
+                    Father Name :
+                <input type="text" name="" id="fname" th:value="${st.getFather_name()}" readonly>
+
+            
+                Mother Name :
+                <input type="text" name="" id="mname" th:value="${st.getMother_name()}" readonly>
+
+            
+                Parents Contact : 
+                <input type="text" name="" id="pphone" th:value="${st.getParents_contact()}" readonly>
+
+
+                Address Line #1
+                <input type="text" name="" id="ad1" th:value="${st.getAddress_01()}" readonly>
+
+
+                Address Line #2
+                <input type="text" name="" id="ad2" th:value="${st.getAddress_02()}" readonly>
+                </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewData</title>
+</head>
+<body>
+    <h1>
+        <ul th:each="item : ${students}">
+            <li>
+                <a th:href="@{'/student/'+${item.getId()}}"><span th:text="${item.getName()}"></span></a>
+            </li>
+        </ul>
+    </h1>
+</body>
+</html>

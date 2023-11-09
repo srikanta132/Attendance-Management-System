@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Classes</title>
+  </head>
+  <body>
+    <div>
+      <ul th:each="item : ${class}">
+        <li>
+          <a th:href="@{'/classes/Attendence/'+${item.getId()}}">
+            <span th:text="${item.getClassName()}"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

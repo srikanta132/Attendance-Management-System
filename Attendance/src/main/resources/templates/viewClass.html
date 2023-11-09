@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewClass</title>
+</head>
+<body>
+    <h1> Your Classes </h1>
+    <div>
+        <ul th:each="item : ${classes}">
+            <li>
+                <a th:href="@{'/your-class/add/'+${item.getId()}}">
+                    <span th:text="${item.getClassName()}"></span>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

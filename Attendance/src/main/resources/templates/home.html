@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+    <div>
+      <h1>
+        <a th:href="@{/create-class}">create class</a><br />
+        <a th:href="@{/classes}">take daily attendence</a><br />
+        <a th:href="@{/your-class}">your classes</a><br>
+        <a th:href="@{/settings}">manage</a>
+      </h1>
+    </div>
+  </body>
+</html>

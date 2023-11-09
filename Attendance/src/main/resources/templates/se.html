@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form{
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            border: 2px solid rebeccapurple;
+            padding: 12px;
+            background: rgb(191, 186, 197);
+            transition: 10s;
+        }
+        .form:hover{
+            background: rgb(99, 66, 152);
+        }
+        .inside{
+            width: 440px;
+            padding-bottom: 8px;
+            position: relative;
+            top: 10px;
+            margin-top: 10px;
+        }
+        .select{
+            height: 40px;
+        }
+        .select-inside{
+            height: 40px;
+        }
+        .btn{
+            height: 40px;
+            background: rebeccapurple;
+            color: white;
+            margin-top: 10px;
+            width: 80px;
+            border: none;
+            border-radius: 4px;
+            transition: 0.5s;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn:hover{
+            /* background:  rgb(56, 3, 108); */
+            box-shadow: inset 100px 0 0 0 rgba(56, 3, 108);
+        }
+    </style>
+</head>
+<body>
+    <h4>Fill Up</h4>
+        <form action="/get" method="post">
+            <div class="form">
+            <input type="text" placeholder="Name" name="name" required class="inside">
+            <select name="dep" id="" class="inside">
+                <option value="IT">Information Technology</option>
+                <option value="ETC">Electronics & Telecommunication</option>
+                <option value="EL">Electrical</option>
+                <option value="ME">Mechanical</option>
+                <option value="CV">Civil</option>
+            </select>
+            <select name="sem" id="" class="inside">
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="4">4th</option>
+                <option value="5">5th</option>
+                <option value="6">6th</option>
+            </select>
+            <input type="text" placeholder="Registration Number" name="roll" required class="inside">
+            <input type="tel" placeholder="Contact #1 Phone" name="c1" required class="inside">
+            <input type="text" placeholder="Contact #2" name="c2"  class="inside">
+            <input type="text" placeholder="Father Name" name="fname" required class="inside">
+            <input type="text" placeholder="Mother Name" name="mname" required class="inside">
+            <input type="tel" placeholder="Parents Contact Phone" name="pphone" class="inside">
+            <input type="text" placeholder="Address Line #1" name="ad1" required class="inside">
+            <input type="text" placeholder="Address Line #2" name="ad2"  class="inside">
+            <input type="email" placeholder="Your Email" name="email" class="inside">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #create-btn{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    already
+
+    
+
+    <input type="hidden" id="hidval" th:value="${endPoint}">
+    <div>
+        <h1 id="successMessage" style="display: none">Added Succeessfully</h1>
+      </div>
+
+
+      <input type="text" id="username" placeholder="Enter Roll" oninput="play()" pattern="^[^\s]*$" required>
+      <p id="check-user"></p>
+      <button id="create-btn" type="button">add</button>
+
+      <h1 id="successMessage" style="display: none;">Addes Succeessfully</h1>
+
+</body>
+<script>
+  function play(){
+        
+            let username = document.getElementById('username').value;
+            let message = document.getElementById('check-user');
+
+          
+            console.log("play")
+
+            fetch('/check-roll?username=' + username)
+                  .then(response => response.json())
+                  .then(data=>{
+                    if(data.avail){
+                      console.log(data.avail)
+                      message.style.color='red';
+                      message.textContent = 'Roll Not Found';
+                      let createBTN = document.getElementById('create-btn');
+                      createBTN.style.display = 'none';
+                    }else{
+                      message.style.color='green';
+                      message.textContent = 'Roll found.';
+                      let createbtn = document.getElementById('create-btn');
+                      createbtn.style.display = 'block';
+                    }
+                  })
+                  .catch(error=>{
+                    message.style.color='red';
+                    message.textContent = 'Internal Error.'
+                  });
+      }
+</script>
+<script>
+    document.getElementById("create-btn").addEventListener("click", sendData);
+    const select = document.getElementById("select").value
+    function sendData() {
+      
+      let val = document.getElementById('hidval').value
+      let roll = document.getElementById("username").value;
+      // console.log(val)
+      fetch(val+roll)
+        .then((res) => {
+          if (res.ok) {
+            return res.text();
+          }
+          throw new Error("Network response was not ok.");
+        })
+        .then((resData) => {
+          console.log(resData);
+          showSuccessMessage();
+          clear();
+        })
+        .catch((exception) => {
+          console.error("Error", exception);
+        });
+
+      function showSuccessMessage() {
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block"; // Show the success message
+      }
+
+      setTimeout(function () {
+        successMessage.style.display = "none";
+      }, 3000);
+
+      function clear() {
+        let form = document.getElementById("dataForm");
+        let input = form.getElementsByTagName("input");
+        for (let i = 0; i < input.length; i++) {
+          input[i].value = "";
+        }
+      }
+    }
+
+    
+  </script>
+</html>
